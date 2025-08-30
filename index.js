@@ -27,7 +27,7 @@ app.post("/api/admission", async (req, res) => {
 
 app.get("/api/admission", async (req, res) => {
     try {
-        const AdmissionInquiries = await Admission.find();
+        const AdmissionInquiries = await Admission.find({}).sort({ createdAt: -1 });
         res.status(200).json(AdmissionInquiries);
     } catch (error) {
         console.error("Error in root API:", error);
@@ -92,7 +92,7 @@ app.post("/api/register", async (req, res) => {
 
 app.get("/api/register", async (req, res) => {
     try {
-        const RegisterUser = await Register.find({});
+        const RegisterUser = await Register.find({}).sort({ createdAt: -1 });
         res.status(200).json(RegisterUser);
     } catch (error) {
         console.error("Error in root API:", error);
